@@ -24,6 +24,11 @@ module.exports =  class Graph {
         return (Array.isArray(this.graph[a])) ; 
     }
 
+
+    addNodeUnsafe(a){
+        this.graph[a]=[];
+    }
+
     addNode(a){
         if (this.hasNode(a)){ return; }
         this.graph[a] = [];
@@ -39,6 +44,11 @@ module.exports =  class Graph {
 
     hasEdge(a,b){
         return this.graph[a].includes(b);  
+    }
+
+    addEdgeUnsafe(a,b){
+        this.graph[a].push(b);
+        this.graph[b].push(a);
     }
 
     addEdge(a,b) {
@@ -66,13 +76,25 @@ module.exports =  class Graph {
         }
         if (Array.isArray(a)){
             return  a.map((nod)=>{ 
-                return this.graph[a].length;
+                return this.graph[nod].length;
             })
         }else if (this.hasNode(a)){
             return this.graph[a].length;
         }else{
             return null;
         }
+    }
+
+
+    static random(n, d) {
+        let g = new Graph([0]);
+        for (let i = 1; i < n; i++){
+            g.addNodeUnsafe(i);
+            for (let j=0; j<i; j++){
+                if (Math.random() < d ) { g.addEdgeUnsafe(i,j); }
+            }
+        }
+        return g;
     }
 
 }
