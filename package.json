@@ -26,8 +26,7 @@
   },
   "homepage": "https://github.com/gherardovarando/gmat-js#readme",
   "dependencies": {
-    "lib-r-math.js": "^1.0.82",
-    "simple.graphs.js": "0.0.1"
+    "simple.graphs.js": "0.0.3"
   },
   "devDependencies": {
     "mocha": "^5.1.1"

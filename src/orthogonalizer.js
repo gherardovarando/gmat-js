@@ -1,37 +1,32 @@
-const {degree} = require("./graph.js")
+const Graph  = require("simple.graphs.js")
 const gs = require("./gramschmidt.js")
 
 
-
-module.exports = function(x, edges){
-       p =  adj.length
-       degrees <- degree(adj)
-       order <- degrees.sort((a,b) => return a-b)
-       n_zeros <- length(degrees[degrees == 0])
-      
-        if (n_zeros > 1){
-          mort[order[1:n_zeros],] <- gs(mort[order[1:n_zeros]])
+/* Partial orthogonalizer based on Gram-Schmidt
+ * 
+ */
+module.exports = function(x, g){
+    let  p =  g.nodes().length;
+    let degrees = g.degreeList();
+    let order = degrees.sort((a,b) =>{ return (a.degree-b.degree)});
+    let n_zeros = 0;
+    for (let i = 0; i < p ; i++){
+        if (order[i].degree ==  0)  n_zeros = i + 1;
+    }
+    if (n_zeros > 0){
+       gs(x,0,n_zeros + 1);
+    }
+    console.log("a");
+    for (let i=n_zeros + 1; i < p ; i++) {
+        let temp = x.slice(0,n_zeros); //shallow copy
+        for (let j = n_zeros; j < i; j++){
+            if (!g.hasEdge(i,j)){
+                temp.push(x[j].slice(0,x[j].length)) // real copy 
+            }
         }
-
-	for (i in (n_zeros+1):p) {
-
-		row_iort <- which(madj[order[i], ] == FALSE)
-		row_iort <- row_iort[ row_iort %in% order[1:(i-1)]]
-		row_nort <- length(row_iort)
-
-		if (row_nort > 0) {
-			row_ort_base <- .gram_schmidt(mort[row_iort, ],k=
-                        max(n_zeros-1,1))
-			if (row_nort == 1) {
-				mort[i, ] <- mort[i, ] - .proj(mort[i, ], row_ort_base)
-			} else {
-				for (j in 1:row_nort) {
-					mort[i, ] <- mort[i, ] - .proj(mort[i, ], row_ort_base[j, ])
-				}
-			}
-		}
-	}
-
-	return (mort)
+        temp.push(x[i]); //shallow copy
+        gs(temp, n_zeros);
+    }
+    return(x)
 }
-}
+
