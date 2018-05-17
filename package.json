@@ -4,7 +4,7 @@
   "description": "js library to generate graphically constrained matrices ",
   "main": "gmat.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "bin": {
     "gmat-sample": "sample.js"
@@ -26,6 +26,10 @@
   },
   "homepage": "https://github.com/gherardovarando/gmat-js#readme",
   "dependencies": {
-    "lib-r-math.js": "^1.0.82"
+    "lib-r-math.js": "^1.0.82",
+    "simple.graphs.js": "0.0.1"
+  },
+  "devDependencies": {
+    "mocha": "^5.1.1"
   }
 }
