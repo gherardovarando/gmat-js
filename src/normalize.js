@@ -1,7 +1,7 @@
-module.exports = function(t, i){
-    let norm = t.x[t.ix[i]].reduce((a, v) => a + v*v, 0);
-    t.x[t.ix[i]].map((v, j) =>  {
-        t.x[t.ix[i]][j]= v/ Math.sqrt(norm); 
+module.exports = function(x){
+    let norm = x.reduce((a, v) => a + v*v, 0);
+    return x.map((v) =>  {
+        return v/ Math.sqrt(norm); 
     }
-    )
+    );
 }

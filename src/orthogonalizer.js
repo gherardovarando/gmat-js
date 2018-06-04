@@ -19,7 +19,7 @@ module.exports = function(x, g){
         }
     }
     if (n_zeros > 0){
-        gs({x:x, ix: zeros}, 0);
+        gs(x, zeros, 0);
     }
     //console.log("zeros : " + n_zeros);
     for (let i = n_zeros; i < p ; i++) {
@@ -34,9 +34,9 @@ module.exports = function(x, g){
             }
         }
         ix.push(order[i]); 
-        gs({x:x, ix : ix}, st);
+        gs(x, ix, st);
         oldix = ix.slice();
-        console.log("gain" + (st-n_zeros));
+        //console.log("gain" + (st-n_zeros));
     }
     return(x)
 }
