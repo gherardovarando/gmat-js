@@ -5,7 +5,7 @@ const normalize = require("./normalize.js");
 let temp = 0;
 module.exports = function(x, ix, k){
     if (!x.length || !ix.length || ix.length < 2 || x.length < 2 ){
-        return 
+        return x 
     }
     if (!k){
         k = 0
@@ -16,5 +16,5 @@ module.exports = function(x, ix, k){
         }
         x[ix[i]] = normalize(x[ix[i]]);
     }
-    return
+    return x;
 }
