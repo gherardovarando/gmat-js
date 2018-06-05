@@ -37,6 +37,7 @@ module.exports = function(x, g){
         gs(x, ix, st);
         oldix = ix.slice();
         //console.log("gain" + (st-n_zeros));
+ console.log(i);
     }
     return(x)
 }
