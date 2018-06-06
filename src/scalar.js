@@ -1,8 +1,12 @@
 const sum = require("./sum.js")
-const prod = require("./prod.js")
 
-module.exports = function(u,v){
-    return sum( u.map((x,i) => {
-        return x*v[i]
-    }));
+module.exports = function(o){
+    let i = o.i;
+    let j=o.j;
+    let p=o.p;
+    let res = 0;
+    for (let t = 0; t < p ; t++){
+      res = res + o.x[p*i + t]*o.x[p*j + t];
+    }
+    return res;
 }

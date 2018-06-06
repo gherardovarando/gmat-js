@@ -3,32 +3,30 @@ const orth = require("./src/orthogonalizer.js");
 const Graph = require("simple.graphs.js");
 const normalize = require("./src/normalize.js");
 
-let x = [1,2,3]
-console.log(normalize(x))
-
-console.log(normalize(x).reduce( (a,v) => a + v*v, 0));
 
 let t = Date.now();
-let p =100 
+let p = 200 
 let g = Graph.random(p ,0.05);
-let M = [];
-for (let i=0; i < p; i++){
-    //M[i]=[];
-    M[i]=new Float64Array( new ArrayBuffer(p*8));
-    //console.log(M[i].length);
-    for (let j=0; j < p; j++){
-        M[i][j] = Math.random();
+let M = new Float64Array( new ArrayBuffer(p*p*8));
+//console.log(M.length);
+for (let i=0; i < p*p; i++){
+        M[i] = Math.random();
     }
-}
 console.log("random matrix generated");
-//console.log(M);
-//debugger;
-M = orth(M,g);
+
+orth({
+ x : M, 
+ g: g
+});
 t = Date.now() -t 
 console.log("elcapsed time : " + t );
-//console.log(M)
+
+console.log(scalar({
+ x: M,
+ p: p,
+ i: 0, 
+ j:1
+}));
 
 
-
-console.log("scalar product : " + scalar(M[0],M[1]))
 

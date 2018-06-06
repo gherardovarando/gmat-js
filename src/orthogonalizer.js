@@ -5,9 +5,9 @@ const range = require("./range.js");
 /* Partial orthogonalizer based on Gram-Schmidt
  * 
  */
-module.exports = function(x, g){ 
-    let p =  g.nodes().length;
-    let degrees = g.degree();
+module.exports = function(o){
+    let p =  o.g.nodes().length;
+    let degrees = o.g.degree();
     let order = range(0,p).sort((i,j) =>{ return (degrees[i]-degrees[j])});
     let n_zeros = 0;
     let zeros = [];
@@ -19,25 +19,35 @@ module.exports = function(x, g){
         }
     }
     if (n_zeros > 0){
-        gs(x, zeros, 0);
+        gs({
+            x: o.x,
+            p: p,
+            ix: zeros,
+            k: 0
+        });
     }
     //console.log("zeros : " + n_zeros);
     for (let i = n_zeros; i < p ; i++) {
         let ix = zeros.slice();
         let st = n_zeros;
         for (let j = n_zeros; j < i; j++){
-            if (!g.hasEdge(order[i], order[j])){
+            if (!o.g.hasEdge(order[i], order[j])){
                 ix.push(order[j]);
                 if (ix[ix.length -1] == oldix[ix.length - 1] ){
-                   st = st + 1; 
+                    st = st + 1; 
                 }
             }
         }
         ix.push(order[i]); 
-        gs(x, ix, st);
+        gs({
+            x: o.x,
+            p: p,
+            ix: ix,
+            k: st
+        });
         oldix = ix.slice();
         //console.log("gain" + (st-n_zeros));
+        //console.log(i);
     }
-    return(x)
 }
 
