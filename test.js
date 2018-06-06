@@ -9,19 +9,20 @@ console.log(normalize(x))
 console.log(normalize(x).reduce( (a,v) => a + v*v, 0));
 
 let t = Date.now();
-let p = 100 
-let g = Graph.random(p ,0.005);
+let p =100 
+let g = Graph.random(p ,0.05);
 let M = [];
 for (let i=0; i < p; i++){
-    M[i]=[];
+    //M[i]=[];
+    M[i]=new Float64Array( new ArrayBuffer(p*8));
+    //console.log(M[i].length);
     for (let j=0; j < p; j++){
         M[i][j] = Math.random();
-
     }
 }
 console.log("random matrix generated");
 //console.log(M);
-debugger;
+//debugger;
 M = orth(M,g);
 t = Date.now() -t 
 console.log("elcapsed time : " + t );
