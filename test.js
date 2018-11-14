@@ -5,8 +5,8 @@ const normalize = require("./src/normalize.js");
 
 
 let t = Date.now();
-let p = 200 
-let g = Graph.random(p ,0.05);
+let p = 4
+let g = Graph.random(p ,0.5);
 let M = new Float64Array( new ArrayBuffer(p*p*8));
 //console.log(M.length);
 for (let i=0; i < p*p; i++){
@@ -15,18 +15,22 @@ for (let i=0; i < p*p; i++){
 console.log("random matrix generated");
 
 orth({
- x : M, 
+ x : M,
  g: g
 });
-t = Date.now() -t 
+t = Date.now() -t
 console.log("elcapsed time : " + t );
 
-console.log(scalar({
- x: M,
- p: p,
- i: 0, 
- j:1
-}));
+for (let i = 0; i < p; i++) {
+  console.log("row " + i );
+  for (let j = 0; j < p; j++) {
+    console.log(scalar({
+     x: M,
+     p: p,
+     i: i,
+     j: j
+   }));
+  }
+}
 
-
-
+console.log(g)
