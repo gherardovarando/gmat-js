@@ -26,7 +26,7 @@
   },
   "homepage": "https://github.com/gherardovarando/gmat-js#readme",
   "dependencies": {
-    "simple.graphs.js": "0.0.3"
+    "simple.graphs.js": "0.1.0"
   },
   "devDependencies": {
     "mocha": "^5.1.1"

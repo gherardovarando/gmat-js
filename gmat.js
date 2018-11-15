@@ -4,8 +4,10 @@ const Graph = require("simple.graphs.js");
 const normalize = require("./src/normalize.js");
 
 
-
-exports.orthogonalizer = orth;
+exports.al = {};
+exports.al.orthogonalizer = orth;
+exports.al.normalize_r = normalize;
+exports.al.scalar_r = scalar;
 
 exports.genMatrix = function(options) {
   if (!options) return;
