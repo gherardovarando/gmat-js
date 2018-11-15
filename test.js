@@ -34,3 +34,23 @@ for (let i = 0; i < p; i++) {
 }
 
 console.log(g)
+
+const {al} = require("./gmat.js");
+const pp = 10;
+const x = new Float64Array( new ArrayBuffer(pp*pp*8)); //matrix p x p in array
+for (let i=0; i < pp*pp; i++){
+        x[i] = Math.random();
+    }
+
+al.normalize_r({
+  x: x, //pass the array as reference
+  p: pp, //pass the dimension
+  i: 1  //pass the row index
+});
+
+console.log(' squared norm of normalized vector ' +  (al.scalar_r({
+    x: x,
+    p: pp,
+    i: 1,
+    j: 1
+  }) ) );
