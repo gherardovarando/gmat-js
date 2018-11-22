@@ -44,7 +44,7 @@ gmat-sample 100 0.02 > matrix_100_0.02.txt
 The the matrix can be loaded in R, with the following code,
 
 ```
-d <- read.table('matrix_1000_0.5.txt', numerals = 'warn.loss')
+d <- read.table('matrix_1000_0.02.txt', numerals = 'warn.loss')
 p <- sqrt(dim(d)[1])
 K <- matrix(d[,1], nrow=p)
 kappa(K)
