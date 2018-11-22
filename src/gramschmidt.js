@@ -2,15 +2,15 @@ const scalar = require("./scalar.js");
 const normalize = require("./normalize.js");
 module.exports = function(o) {
   let temp = 0;
-  if (!o.x.length || !o.ix.length || o.ix.length < 2 || o.x.length < 2) {
-    if (o.ix.length == 1) {
-      normalize({
-        x: o.x,
-        p: o.p,
-        i: o.ix[0]
-      });
-    }
+  if (!o.x.length || !o.ix.length || o.ix.length < 1 || o.x.length < 1) {
     return
+  }
+  if (o.ix.length < 2) {
+    normalize({
+      x: o.x,
+      p: o.p,
+      i: o.ix[0]
+    });
   }
   if (!o.k) {
     o.k = 0;

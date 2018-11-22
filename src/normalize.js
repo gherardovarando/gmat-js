@@ -1,9 +1,9 @@
 const scalar = require("./scalar.js");
 const prod = require("./prod.js");
 module.exports = function(o){
-    let i = o.i;
-    let p=o.p;
-    let norm =  Math.sqrt(scalar({
+    const i = o.i;
+    const p=o.p;
+    const norm =  Math.sqrt(scalar({
      x: o.x,
      i: o.i,
      p: o.p,
