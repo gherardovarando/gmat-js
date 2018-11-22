@@ -1,6 +1,6 @@
 {
   "name": "gmat-js",
-  "version": "0.2.0",
+  "version": "0.0.1",
   "description": "js library to generate graphically constrained matrices ",
   "main": "gmat.js",
   "scripts": {
@@ -19,7 +19,16 @@
     "matrices",
     "sampling"
   ],
-  "author": "gherardo varando <gherardo.varando@gmail.com>",
+  "contributors": [
+    {
+      "name": "Gherardo Varando",
+      "email": "gherardo.varando@gmail.com",
+      "url": "https://gherardovarando.github.io/"
+    },
+    {
+      "name": "Irene Cordoba"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/gherardovarando/gmat-js/issues"
