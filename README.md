@@ -31,3 +31,12 @@ console.log(
   })
   );
 ```  
+
+## Command line 
+
+If you install this module with the option `-g` you can then use it in the 
+command line as,
+
+```
+gmat-sample 100 0.02 > matrix_100_0.02.txt 
+```
