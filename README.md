@@ -4,8 +4,8 @@
 
 The implementation use `TypedArray` and `ArrayBuffer`, and matrices are
 passed by reference to functions, e.g `al.normalize_r(o)` normalize the
-ith row of matrix passed as `o.x`
-
+ith row of matrix passed as `o.x` 
+(run next example in [RunKit](https://runkit.com/gherardovarando/runkit-npm-gmat-js) )
 ```
 const {al} = require("gmat-js");
 const p = 10;
